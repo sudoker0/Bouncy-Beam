@@ -1,0 +1,62 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://Scripts/Global.gd" type="Script" id=1]
+[ext_resource path="res://Blocks/DeadZoneBlock.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Blocks/LaserBlock.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Blocks/EmptyBlock.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Audio/select.wav" type="AudioStream" id=5]
+[ext_resource path="res://Blocks/WallBlock.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Blocks/ReceiverBlock.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Blocks/GlassBlock.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Blocks/LightBlockBlock.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scene/EditBlock.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Audio/laser_pointer.wav" type="AudioStream" id=11]
+[ext_resource path="res://Audio/lose.wav" type="AudioStream" id=12]
+[ext_resource path="res://Audio/pickup.wav" type="AudioStream" id=13]
+[ext_resource path="res://Audio/putdown.wav" type="AudioStream" id=14]
+[ext_resource path="res://Images/UI/block_selected_bad.png" type="Texture" id=15]
+[ext_resource path="res://Images/UI/block_selected.png" type="Texture" id=16]
+[ext_resource path="res://Images/UI/block_selected_good.png" type="Texture" id=17]
+[ext_resource path="res://Images/UI/stop_button.png" type="Texture" id=18]
+[ext_resource path="res://Images/UI/play_button.png" type="Texture" id=19]
+[ext_resource path="res://Images/Blocks/wall_block.png" type="Texture" id=20]
+[ext_resource path="res://Images/Blocks/laser_block.png" type="Texture" id=21]
+[ext_resource path="res://Images/Blocks/glass_block.png" type="Texture" id=22]
+[ext_resource path="res://Images/Blocks/empty_block.png" type="Texture" id=23]
+[ext_resource path="res://Images/Blocks/receiver_block.png" type="Texture" id=24]
+[ext_resource path="res://Images/Blocks/dead_zone_block.png" type="Texture" id=25]
+[ext_resource path="res://Images/Blocks/block_block.png" type="Texture" id=26]
+
+[node name="Node" type="Node"]
+script = ExtResource( 1 )
+intro = "res://Scene/Intro.tscn"
+gameboard = "res://Scene/Gameboard.tscn"
+levelChooser = "res://Scene/LevelChooser.tscn"
+settings = "res://Scene/Settings.tscn"
+mapEditor = "res://Scene/MapEditor.tscn"
+helpAndAbout = "res://Scene/HelpNAbout.tscn"
+DeadZoneBlock = ExtResource( 2 )
+EmptyBlock = ExtResource( 4 )
+GlassBlock = ExtResource( 8 )
+LaserBlock = ExtResource( 3 )
+LightBlockBlock = ExtResource( 9 )
+ReceiverBlock = ExtResource( 7 )
+WallBlock = ExtResource( 6 )
+DeadZoneBlockTexture = ExtResource( 25 )
+EmptyBlockTexture = ExtResource( 23 )
+GlassBlockTexture = ExtResource( 22 )
+LaserBlockTexture = ExtResource( 21 )
+LightBlockBlockTexture = ExtResource( 26 )
+ReceiverBlockTexture = ExtResource( 24 )
+WallBlockTexture = ExtResource( 20 )
+EditBlock = ExtResource( 10 )
+pressedButtonSoundFile = ExtResource( 5 )
+laserShootingSoundFile = ExtResource( 11 )
+loseSoundFile = ExtResource( 12 )
+pickupFile = ExtResource( 13 )
+putdownFile = ExtResource( 14 )
+blockSelected = ExtResource( 16 )
+blockSelectedGood = ExtResource( 17 )
+blockSelectedBad = ExtResource( 15 )
+stopButton = ExtResource( 18 )
+playButton = ExtResource( 19 )

@@ -1,0 +1,176 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Fonts/ShareTechMono-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scene/ChooseLevelButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/LevelChooser.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=2]
+size = 48
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0, 0, 0.627451 )
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color( 0.627451, 0.627451, 0.627451, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0, 0, 0, 0.627451 )
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color( 0.501961, 0.501961, 0.501961, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0, 0, 0, 0.627451 )
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color( 0.627451, 0.627451, 0.627451, 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0, 0, 0, 0.627451 )
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color( 0.501961, 0.501961, 0.501961, 1 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0, 0, 0, 0.627451 )
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="InputEventKey" id=21]
+scancode = 16777217
+
+[sub_resource type="ShortCut" id=10]
+shortcut = SubResource( 21 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 64
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="InputEventKey" id=22]
+control = true
+command = true
+scancode = 79
+
+[sub_resource type="ShortCut" id=23]
+shortcut = SubResource( 22 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+button = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.12549, 0.12549, 0.12549, 1 )
+
+[node name="BackButton" type="Button" parent="."]
+margin_left = 23.0
+margin_top = 19.0
+margin_right = 161.0
+margin_bottom = 88.0
+mouse_default_cursor_shape = 2
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/disabled = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+shortcut = SubResource( 10 )
+text = "Back"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -300.0
+margin_top = 100.0
+margin_right = 300.0
+margin_bottom = -100.0
+
+[node name="LevelList" type="GridContainer" parent="ScrollContainer"]
+margin_right = 600.0
+margin_bottom = 520.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/vseparation = 24
+custom_constants/hseparation = 31
+columns = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -88.0
+margin_top = 16.0
+margin_right = 88.0
+margin_bottom = 90.0
+custom_fonts/mono_font = SubResource( 8 )
+custom_fonts/bold_italics_font = SubResource( 8 )
+custom_fonts/italics_font = SubResource( 8 )
+custom_fonts/bold_font = SubResource( 8 )
+custom_fonts/normal_font = SubResource( 8 )
+text = "Level"
+
+[node name="LoadButton" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -265.0
+margin_top = 19.0
+margin_right = -23.0
+margin_bottom = 88.0
+mouse_default_cursor_shape = 2
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/disabled = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+shortcut = SubResource( 23 )
+text = "Load Map"
+
+[node name="OpenFile" type="FileDialog" parent="."]
+margin_right = 489.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 200, 240 )
+window_title = "Open a File"
+resizable = true
+mode = 0
+access = 2
+filters = PoolStringArray( "*.json" )
+current_dir = "/home/anhquan/GitHub/Bouncy Beam"
+current_path = "/home/anhquan/GitHub/Bouncy Beam/"
+
+[node name="InvalidFileDialog" type="WindowDialog" parent="."]
+margin_right = 180.0
+margin_bottom = 90.0
+window_title = "Error"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="InvalidFileDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+text = "Invalid or nonexistence map file."
+
+[connection signal="button_down" from="BackButton" to="." method="_on_BackButton_button_down"]
+[connection signal="button_down" from="LoadButton" to="." method="_on_LoadButton_button_down"]
+[connection signal="file_selected" from="OpenFile" to="." method="_on_OpenFile_file_selected"]

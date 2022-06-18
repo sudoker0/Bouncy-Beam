@@ -1,0 +1,614 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Fonts/ShareTechMono-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scripts/HelpNAbout.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0, 0, 0.627451 )
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color( 0.627451, 0.627451, 0.627451, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0, 0, 0.627451 )
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color( 0.501961, 0.501961, 0.501961, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0, 0, 0, 0.627451 )
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color( 0.627451, 0.627451, 0.627451, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0, 0, 0, 0.627451 )
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color( 0.501961, 0.501961, 0.501961, 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0, 0, 0, 0.627451 )
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="InputEventKey" id=21]
+scancode = 16777217
+
+[sub_resource type="ShortCut" id=10]
+shortcut = SubResource( 21 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 36
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 24
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.12549, 0.12549, 0.12549, 1 )
+
+[node name="BackButton" type="Button" parent="."]
+margin_left = 23.0
+margin_top = 19.0
+margin_right = 161.0
+margin_bottom = 88.0
+mouse_default_cursor_shape = 2
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+shortcut = SubResource( 10 )
+text = "Back"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 24.0
+margin_top = 112.0
+margin_right = -24.0
+margin_bottom = -24.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+margin_right = 896.0
+margin_bottom = 1188.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HSeparator3" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+margin_right = 896.0
+margin_bottom = 4.0
+
+[node name="Help" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 8.0
+margin_right = 896.0
+margin_bottom = 50.0
+custom_fonts/normal_font = SubResource( 7 )
+text = "Help"
+fit_content_height = true
+
+[node name="T3" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 54.0
+margin_right = 896.0
+margin_bottom = 83.0
+custom_fonts/normal_font = SubResource( 8 )
+text = "--- [General QNA] ---"
+fit_content_height = true
+
+[node name="Q8" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 87.0
+margin_right = 896.0
+margin_bottom = 116.0
+custom_fonts/normal_font = SubResource( 8 )
+text = "Q: What are the blocks in the game, and what do they do?"
+fit_content_height = true
+
+[node name="A8" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 120.0
+margin_right = 896.0
+margin_bottom = 149.0
+custom_fonts/normal_font = SubResource( 8 )
+bbcode_enabled = true
+bbcode_text = "[url={\"open_text\": \"A8-Content\"}]A: (Click to expand/contract content)[/url]"
+text = "A: (Click to expand/contract content)"
+fit_content_height = true
+
+[node name="A8-Content" type="RichTextLabel" parent="ScrollContainer/VBoxContainer" groups=["A8-Content"]]
+visible = false
+margin_top = 153.0
+margin_right = 900.0
+margin_bottom = 1065.0
+bbcode_enabled = true
+bbcode_text = "[img]res://Images/Blocks/dead_zone_block.png[/img]
+ - Dead Zone Block: Where you can't place block on top of
+
+[img]res://Images/Blocks/empty_block.png[/img]
+ - Empty Block: Where you can place block on top of
+
+[img]res://Images/Blocks/glass_block.png[/img]
+ - Glass block: Reflect laser beam with a defined rotation.
+
+[img]res://Images/Blocks/laser_block.png[/img]
+ - Laser block: Shoot a beam of laser at a defined rotation with a defined color.
+
+[img]res://Images/Blocks/block_block.png[/img]
+ - Light Block Block: Block light, like a brick.
+
+[img]res://Images/Blocks/receiver_block.png[/img]
+ - Receiver block: Absorb the laser beam with a defined color. If all receiver get hit with a laser beam that has the same color as the defined color then you'll win. The color in the middle cell will tell you the color that the receiver need (Ex: blue in the picture above)
+
+[img]res://Images/Blocks/wall_block.png[/img]
+ - Wall Block: It's a barrier.
+"
+text = "
+ - Dead Zone Block: Where you can't place block on top of
+
+
+ - Empty Block: Where you can place block on top of
+
+
+ - Glass block: Reflect laser beam with a defined rotation.
+
+
+ - Laser block: Shoot a beam of laser at a defined rotation with a defined color.
+
+
+ - Light Block Block: Block light, like a brick.
+
+
+ - Receiver block: Absorb the laser beam with a defined color. If all receiver get hit with a laser beam that has the same color as the defined color then you'll win. The color in the middle cell will tell you the color that the receiver need (Ex: blue in the picture above)
+
+
+ - Wall Block: It's a barrier.
+"
+fit_content_height = true
+
+[node name="Q10" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 153.0
+margin_right = 896.0
+margin_bottom = 182.0
+custom_fonts/normal_font = SubResource( 8 )
+text = "Q: So does this game has any keyboard shortcut?"
+fit_content_height = true
+
+[node name="A10" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 186.0
+margin_right = 896.0
+margin_bottom = 215.0
+custom_fonts/normal_font = SubResource( 8 )
+bbcode_enabled = true
+bbcode_text = "[url={\"open_text\": \"A10-Content\"}]A: (Click to expand/contract content)[/url]"
+text = "A: (Click to expand/contract content)"
+fit_content_height = true
+
+[node name="A10-Content" type="RichTextLabel" parent="ScrollContainer/VBoxContainer" groups=["A10-Content"]]
+visible = false
+margin_top = 153.0
+margin_right = 900.0
+margin_bottom = 1065.0
+bbcode_enabled = true
+bbcode_text = "F11: Toggle fullscreen
+Esc: Return to the previous menu (Shortcut to Back button)
+P: Toggle laser
+
+Ctrl + N: New map (Map Editor specific)
+Ctrl + O: Load map (Map Editor specific)
+Ctrl + S: Save map (Map Editor specific)
+
+Ctrl + O: Load map (Level Chooser specific)"
+text = "F11: Toggle fullscreen
+Esc: Return to the previous menu (Shortcut to Back button)
+P: Toggle laser
+
+Ctrl + N: New map (Map Editor specific)
+Ctrl + O: Load map (Map Editor specific)
+Ctrl + S: Save map (Map Editor specific)
+
+Ctrl + O: Load map (Level Chooser specific)"
+fit_content_height = true
+
+[node name="S1" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 219.0
+margin_right = 896.0
+margin_bottom = 248.0
+custom_fonts/normal_font = SubResource( 8 )
+fit_content_height = true
+
+[node name="T2" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 252.0
+margin_right = 896.0
+margin_bottom = 281.0
+custom_fonts/normal_font = SubResource( 8 )
+text = "--- [Gameboard related QNA] ---"
+fit_content_height = true
+
+[node name="Q6" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 285.0
+margin_right = 896.0
+margin_bottom = 314.0
+custom_fonts/normal_font = SubResource( 8 )
+text = "Q: What are the control in the gameboard?"
+fit_content_height = true
+
+[node name="A6" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 318.0
+margin_right = 896.0
+margin_bottom = 347.0
+custom_fonts/normal_font = SubResource( 8 )
+bbcode_enabled = true
+bbcode_text = "[url={\"open_text\": \"A6-Content\"}]A: (Click to expand/contract content)[/url]"
+text = "A: (Click to expand/contract content)"
+fit_content_height = true
+
+[node name="A6-Content" type="RichTextLabel" parent="ScrollContainer/VBoxContainer" groups=["A6-Content"]]
+visible = false
+margin_top = 347.0
+margin_right = 740.0
+margin_bottom = 467.0
+bbcode_enabled = true
+bbcode_text = "Left Click: Move block on the map
+Ctrl + Left Click: Move the camera"
+text = "Left Click: Move block on the map
+Ctrl + Left Click: Move the camera"
+fit_content_height = true
+
+[node name="Q7" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 351.0
+margin_right = 896.0
+margin_bottom = 380.0
+custom_fonts/normal_font = SubResource( 8 )
+text = "Q: How do I win?"
+fit_content_height = true
+
+[node name="A7" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 384.0
+margin_right = 896.0
+margin_bottom = 413.0
+custom_fonts/normal_font = SubResource( 8 )
+bbcode_enabled = true
+bbcode_text = "[url={\"open_text\": \"A7-Content\"}]A: (Click to expand/contract content)[/url]"
+text = "A: (Click to expand/contract content)"
+fit_content_height = true
+
+[node name="A7-Content" type="RichTextLabel" parent="ScrollContainer/VBoxContainer" groups=["A7-Content"]]
+visible = false
+margin_top = 347.0
+margin_right = 740.0
+margin_bottom = 467.0
+bbcode_enabled = true
+bbcode_text = "When the simulation begin, you have to make sure all of the laser beam hit the correct receiver (Like blue laser must hit the blue receiver, red laser must hit the red receiver, etc.)"
+text = "When the simulation begin, you have to make sure all of the laser beam hit the correct receiver (Like blue laser must hit the blue receiver, red laser must hit the red receiver, etc.)"
+fit_content_height = true
+
+[node name="S2" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 417.0
+margin_right = 896.0
+margin_bottom = 446.0
+custom_fonts/normal_font = SubResource( 8 )
+fit_content_height = true
+
+[node name="T1" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 450.0
+margin_right = 896.0
+margin_bottom = 479.0
+custom_fonts/normal_font = SubResource( 8 )
+text = "--- [Map Editor related QNA] ---"
+fit_content_height = true
+
+[node name="Q1" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 483.0
+margin_right = 896.0
+margin_bottom = 512.0
+custom_fonts/normal_font = SubResource( 8 )
+text = "Q: How to create a custom map???"
+fit_content_height = true
+
+[node name="A1" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 516.0
+margin_right = 896.0
+margin_bottom = 545.0
+custom_fonts/normal_font = SubResource( 8 )
+bbcode_enabled = true
+bbcode_text = "[url={\"open_text\": \"A1-Content\"}]A: (Click to expand/contract content)[/url]"
+text = "A: (Click to expand/contract content)"
+fit_content_height = true
+
+[node name="A1-Content" type="RichTextLabel" parent="ScrollContainer/VBoxContainer" groups=["A1-Content"]]
+visible = false
+margin_top = 120.0
+margin_right = 740.0
+margin_bottom = 1800.0
+bbcode_enabled = true
+bbcode_text = "1. Access the Map Editor by clicking on the \"Map Editor\" on the intro screen
+[img=640]res://Images/Help/Help-1-1.png[/img]
+
+2. In the Map window, enter the name of the map (Like:  \"Wassup boiiiiii!!\" in this example), the width and the height of the name (Like: a width of 10 and height of 5 in this example). After that, just press the button: \"Create Map\", and wait for the magic to happen.
+[img=640]res://Images/Help/Help-1-2.png[/img]
+
+3. Using the Build window, you can place, modify and delete any block you like (Except the Wall block and the Empty block, because N O).
+[img=640]res://Images/Help/Help-1-3.png[/img]
+
+4. Once you done with making your one of a kind map, click the \"Save\" button in the Map window. A Save Map dialog box will open, allow you to save the map as a JSON file. Save it or not depend on you clicking on the \"Ok\" button or the \"Cancel\" button.
+[img=640]res://Images/Help/Help-1-4.png[/img]"
+text = "1. Access the Map Editor by clicking on the \"Map Editor\" on the intro screen
+
+
+2. In the Map window, enter the name of the map (Like:  \"Wassup boiiiiii!!\" in this example), the width and the height of the name (Like: a width of 10 and height of 5 in this example). After that, just press the button: \"Create Map\", and wait for the magic to happen.
+
+
+3. Using the Build window, you can place, modify and delete any block you like (Except the Wall block and the Empty block, because N O).
+
+
+4. Once you done with making your one of a kind map, click the \"Save\" button in the Map window. A Save Map dialog box will open, allow you to save the map as a JSON file. Save it or not depend on you clicking on the \"Ok\" button or the \"Cancel\" button.
+"
+fit_content_height = true
+
+[node name="Q2" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 549.0
+margin_right = 896.0
+margin_bottom = 578.0
+custom_fonts/normal_font = SubResource( 8 )
+text = "Q: So how do I place and delete a block???"
+fit_content_height = true
+
+[node name="A2" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 582.0
+margin_right = 896.0
+margin_bottom = 611.0
+custom_fonts/normal_font = SubResource( 8 )
+bbcode_enabled = true
+bbcode_text = "[url={\"open_text\": \"A2-Content\"}]A: (Click to expand/contract content)[/url]"
+text = "A: (Click to expand/contract content)"
+fit_content_height = true
+
+[node name="A2-Content" type="RichTextLabel" parent="ScrollContainer/VBoxContainer" groups=["A2-Content"]]
+visible = false
+margin_top = 186.0
+margin_right = 740.0
+margin_bottom = 1376.0
+bbcode_enabled = true
+bbcode_text = "1. Select a block you want to place in the Build window (For this example, I'm gonna select a Laser Block)
+[img=640]res://Images/Help/Help-2-1.png[/img]
+
+2. Right click on an Empty Block in the map, and your block will be placed.
+[img=640]res://Images/Help/Help-2-2.png[/img]
+
+3. If you think the block you placed shouldn't be there, you can de-summon the block by holding the Ctrl key down and right-click the block.
+[img=640]res://Images/Help/Help-2-3.png[/img]"
+text = "1. Select a block you want to place in the Build window (For this example, I'm gonna select a Laser Block)
+
+
+2. Right click on an Empty Block in the map, and your block will be placed.
+
+
+3. If you think the block you placed shouldn't be there, you can de-summon the block by holding the Ctrl key down and right-click the block.
+"
+fit_content_height = true
+
+[node name="Q3" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 615.0
+margin_right = 896.0
+margin_bottom = 644.0
+custom_fonts/normal_font = SubResource( 8 )
+text = "Q: And how do I modify a block???"
+fit_content_height = true
+
+[node name="A3" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 648.0
+margin_right = 896.0
+margin_bottom = 677.0
+custom_fonts/normal_font = SubResource( 8 )
+bbcode_enabled = true
+bbcode_text = "[url={\"open_text\": \"A3-Content\"}]A: (Click to expand/contract content)[/url]"
+text = "A: (Click to expand/contract content)"
+fit_content_height = true
+
+[node name="A3-Content" type="RichTextLabel" parent="ScrollContainer/VBoxContainer" groups=["A3-Content"]]
+visible = false
+margin_top = 252.0
+margin_right = 740.0
+margin_bottom = 1892.0
+bbcode_enabled = true
+bbcode_text = "1. Right click on a non-empty block, and a spinning gear should appear on top of the block you want to edit it's property, which also put the map into Edit mode.
+[img=640]res://Images/Help/Help-3-1.png[/img]
+
+2. In the Build window, switch to the Properties tab, and a bunch of properties should appear with boxes, where you can edit the block's properties.
+[img=640]res://Images/Help/Help-3-2.png[/img]
+
+3. Once you done edit the properties, click the \"Save\" button and the changes will be saved (For this example, I've changed the rotation from 0 to 90, which cause the laser to change direction).
+[img=640]res://Images/Help/Help-3-3.png[/img]
+
+4. Finally, to get out of Edit mode, right-click on the same block that you selected in Step 1, and the spinning gear should disappear.
+[img=640]res://Images/Help/Help-3-4.png[/img]"
+text = "1. Right click on a non-empty block, and a spinning gear should appear on top of the block you want to edit it's property, which also put the map into Edit mode.
+
+
+2. In the Build window, switch to the Properties tab, and a bunch of properties should appear with boxes, where you can edit the block's properties.
+
+
+3. Once you done edit the properties, click the \"Save\" button and the changes will be saved (For this example, I've changed the rotation from 0 to 90, which cause the laser to change direction).
+
+
+4. Finally, to get out of Edit mode, right-click on the same block that you selected in Step 1, and the spinning gear should disappear.
+"
+fit_content_height = true
+
+[node name="Q4" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 681.0
+margin_right = 896.0
+margin_bottom = 739.0
+custom_fonts/normal_font = SubResource( 8 )
+text = "Q: Okok, that's cool and all. But how do I actually load my map back."
+fit_content_height = true
+
+[node name="A4" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 743.0
+margin_right = 896.0
+margin_bottom = 772.0
+custom_fonts/normal_font = SubResource( 8 )
+bbcode_enabled = true
+bbcode_text = "[url={\"open_text\": \"A4-Content\"}]A: (Click to expand/contract content)[/url]"
+text = "A: (Click to expand/contract content)"
+fit_content_height = true
+
+[node name="A4-Content" type="RichTextLabel" parent="ScrollContainer/VBoxContainer" groups=["A4-Content"]]
+visible = false
+margin_top = 347.0
+margin_right = 740.0
+margin_bottom = 447.0
+bbcode_enabled = true
+bbcode_text = "1. In the Map window, click the Load button.
+2. A new dialog should popup, asking you to select the map file (as JSON).
+3. Click OK if you've selected a valid map file.
+(I hope you can still follow the instruction without needing pictures, because screenshotting takes quite a while)"
+text = "1. In the Map window, click the Load button.
+2. A new dialog should popup, asking you to select the map file (as JSON).
+3. Click OK if you've selected a valid map file.
+(I hope you can still follow the instruction without needing pictures, because screenshotting takes quite a while)"
+fit_content_height = true
+
+[node name="Q5" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 776.0
+margin_right = 896.0
+margin_bottom = 834.0
+custom_fonts/normal_font = SubResource( 8 )
+text = "Q: Shoot, forget to ask: How do I move around and actually place block and things?"
+fit_content_height = true
+
+[node name="A5" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 838.0
+margin_right = 896.0
+margin_bottom = 867.0
+custom_fonts/normal_font = SubResource( 8 )
+bbcode_enabled = true
+bbcode_text = "[url={\"open_text\": \"A5-Content\"}]A: (Click to expand/contract content)[/url]"
+text = "A: (Click to expand/contract content)"
+fit_content_height = true
+
+[node name="A5-Content" type="RichTextLabel" parent="ScrollContainer/VBoxContainer" groups=["A5-Content"]]
+visible = false
+margin_top = 347.0
+margin_right = 740.0
+margin_bottom = 447.0
+bbcode_enabled = true
+bbcode_text = "Left Click: Move block on the map
+Ctrl + Left Click: Move the camera
+Right Click on an empty block: Place a new block that you selected in the \"Build\" window
+Right Click on a non-empty block: Select / deselect a block to edit its property
+Ctrl + Right Click: Delete block"
+text = "Left Click: Move block on the map
+Ctrl + Left Click: Move the camera
+Right Click on an empty block: Place a new block that you selected in the \"Build\" window
+Right Click on a non-empty block: Select / deselect a block to edit its property
+Ctrl + Right Click: Delete block"
+fit_content_height = true
+
+[node name="Q9" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 871.0
+margin_right = 896.0
+margin_bottom = 929.0
+custom_fonts/normal_font = SubResource( 8 )
+text = "Q: Btw, I see a text on the bottom-right corner telling me if I win or not. Why does it exist?"
+fit_content_height = true
+
+[node name="A9" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 933.0
+margin_right = 896.0
+margin_bottom = 962.0
+custom_fonts/normal_font = SubResource( 8 )
+bbcode_enabled = true
+bbcode_text = "[url={\"open_text\": \"A9-Content\"}]A: (Click to expand/contract content)[/url]"
+text = "A: (Click to expand/contract content)"
+fit_content_height = true
+
+[node name="A9-Content" type="RichTextLabel" parent="ScrollContainer/VBoxContainer" groups=["A9-Content"]]
+visible = false
+margin_top = 347.0
+margin_right = 740.0
+margin_bottom = 447.0
+bbcode_enabled = true
+bbcode_text = "Well, that tell exist to make sure that when you create the map, any player that play your map can actually win. That text will only answer \"Yes\" once all of the laser beam hit the correct receiver (Like blue laser must hit the blue receiver, red laser must hit the red receiver, etc.)"
+text = "Well, that tell exist to make sure that when you create the map, any player that play your map can actually win. That text will only answer \"Yes\" once all of the laser beam hit the correct receiver (Like blue laser must hit the blue receiver, red laser must hit the red receiver, etc.)"
+fit_content_height = true
+
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+margin_top = 966.0
+margin_right = 896.0
+margin_bottom = 970.0
+
+[node name="About" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 974.0
+margin_right = 896.0
+margin_bottom = 1016.0
+custom_fonts/normal_font = SubResource( 7 )
+text = "About"
+fit_content_height = true
+
+[node name="AboutText" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+margin_top = 1020.0
+margin_right = 896.0
+margin_bottom = 1180.0
+bbcode_enabled = true
+bbcode_text = "Game created, animated, textured, coded, exported, deleted by @QuanMCPC (Follow me on GitHub, pls...).
+Made using Godot (Because Unity is a resource hogger).
+Released as Open-Source and under MIT license.
+Special thanks to my friends who helped me test this game.
+
+Version 1.0.0 - 06/18/2022
+Made in Socialist Republic of Vietnam."
+text = "Game created, animated, textured, coded, exported, deleted by @QuanMCPC (Follow me on GitHub, pls...).
+Made using Godot (Because Unity is a resource hogger).
+Released as Open-Source and under MIT license.
+Special thanks to my friends who helped me test this game.
+
+Version 1.0.0 - 06/18/2022
+Made in Socialist Republic of Vietnam."
+fit_content_height = true
+
+[node name="HSeparator2" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+margin_top = 1184.0
+margin_right = 896.0
+margin_bottom = 1188.0
+
+[connection signal="button_down" from="BackButton" to="." method="_on_BackButton_button_down"]
+[connection signal="meta_clicked" from="ScrollContainer/VBoxContainer/A8" to="." method="_on_Open_Content_clicked"]
+[connection signal="meta_clicked" from="ScrollContainer/VBoxContainer/A10" to="." method="_on_Open_Content_clicked"]
+[connection signal="meta_clicked" from="ScrollContainer/VBoxContainer/A6" to="." method="_on_Open_Content_clicked"]
+[connection signal="meta_clicked" from="ScrollContainer/VBoxContainer/A7" to="." method="_on_Open_Content_clicked"]
+[connection signal="meta_clicked" from="ScrollContainer/VBoxContainer/A1" to="." method="_on_Open_Content_clicked"]
+[connection signal="meta_clicked" from="ScrollContainer/VBoxContainer/A2" to="." method="_on_Open_Content_clicked"]
+[connection signal="meta_clicked" from="ScrollContainer/VBoxContainer/A3" to="." method="_on_Open_Content_clicked"]
+[connection signal="meta_clicked" from="ScrollContainer/VBoxContainer/A4" to="." method="_on_Open_Content_clicked"]
+[connection signal="meta_clicked" from="ScrollContainer/VBoxContainer/A5" to="." method="_on_Open_Content_clicked"]
+[connection signal="meta_clicked" from="ScrollContainer/VBoxContainer/A9" to="." method="_on_Open_Content_clicked"]

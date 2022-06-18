@@ -1,0 +1,115 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Images/UI/gear.png" type="Texture" id=1]
+
+[sub_resource type="Animation" id=2]
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.313726 ), Color( 0, 0, 0, 0.54902 ), Color( 0, 0, 0, 0.313726 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Control/TextureRect:rect_rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 180.0, 360.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Control/TextureRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 0.627451 ), Color( 1, 1, 1, 0.392157 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "flashing"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.156863 ), Color( 0, 0, 0, 0.54902 ), Color( 0, 0, 0, 0.156863 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Control/TextureRect:rect_rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 180.0, 360.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Control/TextureRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 0.627451 ), Color( 1, 1, 1, 0.392157 ) ]
+}
+
+[node name="EditBlock" type="Node2D"]
+position = Vector2( -32, -32 )
+z_index = 6
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 2 )
+anims/flashing = SubResource( 1 )
+
+[node name="Control" type="Control" parent="."]
+margin_right = 64.0
+margin_bottom = 64.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.313726 )
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+modulate = Color( 1, 1, 1, 0.392157 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -24.0
+margin_top = -24.0
+margin_right = 24.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 24, 24 )
+texture = ExtResource( 1 )
+expand = true
