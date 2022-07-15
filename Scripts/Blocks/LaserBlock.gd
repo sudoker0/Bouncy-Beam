@@ -1,7 +1,5 @@
 extends Block
 
-export var IWIN = false
-
 onready var ray = $LaserPointer/Raycast
 onready var line = $LaserPointer/Pointer
 
@@ -32,6 +30,7 @@ func _process(_delta):
 		var prev = null
 		var bounces = 0
 		while true:
+			print(ray.is_colliding())
 			if not ray.is_colliding():
 				var pt = ray.global_position + ray.cast_to
 				line.add_point(line.to_local(pt))
@@ -40,11 +39,20 @@ func _process(_delta):
 			var coll = ray.get_collider()
 			#print(coll)
 			var pt = ray.get_collision_point()
-
+			print(coll, " | ", pt)
 			line.add_point(line.to_local(pt))
 
 			if coll.is_in_group("receiver"):
-				IWIN = Color(externalData.laserColor) == Color(coll.get_parent().externalData.receiverColor)
+				coll.get_parent().hit = Color(externalData.laserColor) == Color(coll.get_parent().externalData.receiverColor)
+
+			if coll.is_in_group("switch"):
+				for i in Global.gateList:
+					if Color(i.get_node("Gate/ColorRect").color) == Color(coll.get_node("ColorRect").color) and Color(externalData.laserColor) == Color(coll.get_node("ColorRect").color):
+						i.get_node("Gate/Collision").disabled = true
+						i.get_node("Gate").visible = false
+
+			if coll.is_in_group("colorfilter"):
+				coll.get_parent().get_node("Indicator")
 
 			if coll.is_in_group("mirrors"):
 				var normal = ray.get_collision_normal()
@@ -74,4 +82,9 @@ func _process(_delta):
 			prev.collision_mask = 3
 			prev.collision_layer = 3
 	else:
-		IWIN = false
+		for i in Global.receiverList:
+			i.hit = false
+
+		for i in Global.gateList:
+			i.get_node("Gate/Collision").disabled = false
+			i.get_node("Gate").visible = true

@@ -41,8 +41,8 @@ func _process(_delta):
 		return
 
 	var didIWin = []
-	for i in Global.laserList:
-		didIWin.append(i.IWIN)
+	for i in Global.receiverList:
+		didIWin.append(i.hit)
 	if didIWin.has(false):
 		return
 

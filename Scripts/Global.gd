@@ -13,7 +13,6 @@ var gridHeight = 0
 # Drag variables
 var blockIsMoving = false
 var blockSize = [64, 64]
-var laserList = []
 
 # Constants
 const Z_NORMAL_BLOCK = 2
@@ -30,6 +29,9 @@ const defaultPersistentGameData = {
 }
 
 # General variables
+var receiverList = []
+var gateList = []
+
 var customMap = false
 var beginSimulation = false
 var gameDataJSON = {}
@@ -56,8 +58,11 @@ export (String, FILE, "*.tscn") var mapEditor
 export (String, FILE, "*.tscn") var helpAndAbout
 
 # Block variables
+export (PackedScene) var ColorFilterBlock
 export (PackedScene) var DeadZoneBlock
 export (PackedScene) var EmptyBlock
+export (PackedScene) var GateBlock
+export (PackedScene) var GateSwitchBlock
 export (PackedScene) var GlassBlock
 export (PackedScene) var LaserBlock
 export (PackedScene) var LightBlockBlock
@@ -65,8 +70,11 @@ export (PackedScene) var ReceiverBlock
 export (PackedScene) var WallBlock
 
 # Block texture variables
+export (StreamTexture) var ColorFilterBlockTexture
 export (StreamTexture) var DeadZoneBlockTexture
 export (StreamTexture) var EmptyBlockTexture
+export (StreamTexture) var GateBlockTexture
+export (StreamTexture) var GateSwitchTexture
 export (StreamTexture) var GlassBlockTexture
 export (StreamTexture) var LaserBlockTexture
 export (StreamTexture) var LightBlockBlockTexture
@@ -96,6 +104,11 @@ export (StreamTexture) var playButton
 
 # Block type
 const BlockType = {
+	"ColorFilter": {
+		"name": "Color Filter Block",
+		"type": "ColorFilter",
+		"texture": "ColorFilterBlockTexture",
+	},
 	"DeadZone": {
 		"name": "Dead Zone Block",
 		"type": "DeadZone",
@@ -105,6 +118,16 @@ const BlockType = {
 		"name": "Empty Block",
 		"type": "Empty",
 		"texture": "EmptyBlockTexture",
+	},
+	"Gate": {
+		"name": "Gate Block",
+		"type": "Gate",
+		"texture": "GateBlockTexture"
+	},
+	"GateSwitch": {
+		"name": "Gate Switch Block",
+		"type": "GateSwitch",
+		"texture": "GateSwitchTexture"
 	},
 	"Glass": {
 		"name": "Glass Block",
@@ -175,7 +198,7 @@ func loadPersistentData():
 
 func _input(_event):
 	if Input.is_action_just_pressed("debug_dump_map"):
-		print("List of lasers:", Global.laserList)
+		#print("List of lasers:", Global.laserList)
 		print("Global W | H: ", gridWidth, " | ", gridHeight)
 		for i in range(0, len(Global.blockGrid)):
 			var blocc = ""

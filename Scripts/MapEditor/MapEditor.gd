@@ -17,6 +17,7 @@ func _ready():
 	Global.gridWidth = 0
 	Global.gridHeight = 0
 	Global.isEditingProperty = false
+	Global.beginSimulation = false
 	no_block.visible = true
 	inspector.visible = false
 	saveProperties.visible = false
@@ -40,7 +41,8 @@ func _on_BackButton_button_down():
 	get_tree().change_scene(Global.intro)
 
 func _on_Button_button_down():
-	Global.laserList = []
+	Global.receiverList = []
+	Global.gateList = []
 	$GridManager.MakeGameBoard(mapDialog.get_node("Content/VBoxContainer/Width").value, mapDialog.get_node("Content/VBoxContainer/Height").value)
 	$GridManager.BuildWall()
 	Global.isEditingProperty = false
@@ -105,7 +107,8 @@ func _on_OpenFile_file_selected(path):
 		var data = parse_json(file.get_as_text())
 		file.close()
 		if typeof(data) == TYPE_DICTIONARY:
-			Global.laserList = []
+			Global.receiverList = []
+			Global.gateList = []
 			$GridManager.DrawMap(data)
 			mapDialog.get_node("Content/VBoxContainer/Width").value = int(data.size.width)
 			mapDialog.get_node("Content/VBoxContainer/Height").value = int(data.size.height)
@@ -170,6 +173,13 @@ func _on_DragManager_editBlock():
 				type = "bool"
 				input = CheckBox.new()
 				input.pressed = bool(externalData[i])
+			TYPE_DICTIONARY:
+				print("dict: ", i)
+				type = "dict"
+				input = OptionButton.new()
+				for j in externalData[i].data:
+					input.add_item(j)
+				input.select(externalData[i].selected)
 		name.text = i
 		name.clip_text = true
 		property.add_child(name)
@@ -198,6 +208,11 @@ func _on_SaveProperties_button_down():
 			"bool":
 				print("bool: ", i)
 				data = bool(i.field.pressed)
+			"dict":
+				print("dict: ", i)
+				data = Global.blockGrid[selected.x][selected.y].externalData[i.name]
+				data.selected = int(i.field.selected)
+
 		Global.blockGrid[selected.x][selected.y].externalData[i.name] = data
 	Global.blockGrid[selected.x][selected.y].draggable = $UI/CanvasLayer/Window/Blocks/Content/TabContainer/Properties/Inspector/Draggable/CheckBox.pressed
 
@@ -208,18 +223,19 @@ func _on_PlayButton_button_down():
 	$UI/CanvasLayer/PlayButton.texture_normal = Global.stopButton if Global.beginSimulation else Global.playButton
 
 func _process(_delta):
-	if len(Global.laserList) <= 0:
+	if len(Global.receiverList) <= 0:
 		$UI/CanvasLayer/PlayButton.disabled = true
 		return
 	else:
 		$UI/CanvasLayer/PlayButton.disabled = false
 
-	if not Global.beginSimulation or len(Global.laserList) <= 0:
+	if not Global.beginSimulation or len(Global.receiverList) <= 0:
 		$UI/CanvasLayer/DidYouWin.text = "Did you win? No"
 		return
 	var didIWin = []
-	for i in Global.laserList:
-		didIWin.append(i.IWIN)
+	for i in Global.receiverList:
+		didIWin.append(i.hit)
+	print(didIWin)
 	$UI/CanvasLayer/DidYouWin.text = "Did you win? %s" % ("No" if didIWin.has(false) else "Yes")
 
 func _on_CheckBox_button_up():

@@ -1,0 +1,9 @@
+# Bouncy Beam's Changelog
+
+## [1.1.0] - 2022-xx-xx
+### Added
+ - New block: Gate block and Gate Switch block
+### Changed
+ - Changed the way the game check for winning by checking if all the receiver got hit by any laser beam, instead of all laser hit all of receiver
+ - Changed the texture of glass block and empty block
+ - Block like the Glass block will only bounce if the laser beam hit the bright suface instead.

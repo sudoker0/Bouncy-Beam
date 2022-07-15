@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Scripts/Global.gd" type="Script" id=1]
 [ext_resource path="res://Blocks/DeadZoneBlock.tscn" type="PackedScene" id=2]
@@ -26,6 +26,12 @@
 [ext_resource path="res://Images/Blocks/receiver_block.png" type="Texture" id=24]
 [ext_resource path="res://Images/Blocks/dead_zone_block.png" type="Texture" id=25]
 [ext_resource path="res://Images/Blocks/block_block.png" type="Texture" id=26]
+[ext_resource path="res://Images/Blocks/gates_block.png" type="Texture" id=27]
+[ext_resource path="res://Blocks/GateBlock.tscn" type="PackedScene" id=28]
+[ext_resource path="res://Images/Blocks/gates_switch_block.png" type="Texture" id=29]
+[ext_resource path="res://Blocks/GateSwitchBlock.tscn" type="PackedScene" id=30]
+[ext_resource path="res://Blocks/ColorFilterBlock.tscn" type="PackedScene" id=31]
+[ext_resource path="res://Images/Blocks/color_filter_block.png" type="Texture" id=32]
 
 [node name="Node" type="Node"]
 script = ExtResource( 1 )
@@ -35,15 +41,21 @@ levelChooser = "res://Scene/LevelChooser.tscn"
 settings = "res://Scene/Settings.tscn"
 mapEditor = "res://Scene/MapEditor.tscn"
 helpAndAbout = "res://Scene/HelpNAbout.tscn"
+ColorFilterBlock = ExtResource( 31 )
 DeadZoneBlock = ExtResource( 2 )
 EmptyBlock = ExtResource( 4 )
+GateBlock = ExtResource( 28 )
+GateSwitchBlock = ExtResource( 30 )
 GlassBlock = ExtResource( 8 )
 LaserBlock = ExtResource( 3 )
 LightBlockBlock = ExtResource( 9 )
 ReceiverBlock = ExtResource( 7 )
 WallBlock = ExtResource( 6 )
+ColorFilterBlockTexture = ExtResource( 32 )
 DeadZoneBlockTexture = ExtResource( 25 )
 EmptyBlockTexture = ExtResource( 23 )
+GateBlockTexture = ExtResource( 27 )
+GateSwitchTexture = ExtResource( 29 )
 GlassBlockTexture = ExtResource( 22 )
 LaserBlockTexture = ExtResource( 21 )
 LightBlockBlockTexture = ExtResource( 26 )

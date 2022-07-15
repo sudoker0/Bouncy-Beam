@@ -3,23 +3,33 @@ extends Node2D
 func _ready():
 	Global.blockGrid = [[]]
 	Global.emptyBlockGrid = [[]]
-	Global.laserList = []
+	Global.receiverList = []
+	Global.gateList = []
 
 func CreateBlock(blockType, x, y, isDraggable = true):
 	var block: Block = null
 	match blockType:
+		Global.BlockType.ColorFilter:
+			block = Global.ColorFilterBlock.instance()
+			block.get_node("Body").add_to_group("colorfilter")
 		Global.BlockType.DeadZone:
 			block = Global.DeadZoneBlock.instance()
+		Global.BlockType.Gate:
+			block = Global.GateBlock.instance()
+			Global.gateList.append(block)
+		Global.BlockType.GateSwitch:
+			block = Global.GateSwitchBlock.instance()
+			block.get_node("Switch").add_to_group("switch")
 		Global.BlockType.Glass:
 			block = Global.GlassBlock.instance()
 			block.get_node("GlassPane").add_to_group("mirrors")
 		Global.BlockType.Laser:
 			block = Global.LaserBlock.instance()
-			Global.laserList.append(block)
 		Global.BlockType.LightBlock:
 			block = Global.LightBlockBlock.instance()
 		Global.BlockType.Receiver:
 			block = Global.ReceiverBlock.instance()
+			Global.receiverList.append(block)
 			block.get_node("Body").add_to_group("receiver")
 		Global.BlockType.Wall:
 			block = Global.WallBlock.instance()
@@ -43,8 +53,10 @@ func DeleteBlock(x, y):
 		printerr("GridManager.gd | Function DeleteBlock: Block is null")
 		return false
 	match Global.blockGrid[x][y].blockType:
-		Global.BlockType.Laser:
-			Global.laserList.erase(Global.blockGrid[x][y])
+		Global.BlockType.Receiver:
+			Global.receiverList.erase(Global.blockGrid[x][y])
+		Global.BlockType.Gate:
+			Global.gateList.erase(Global.blockGrid[x][y])
 	if Global.blockGrid[x][y].blockType in [Global.BlockType.Wall]:
 		return
 	remove_child(Global.blockGrid[x][y])

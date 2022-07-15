@@ -1,9 +1,11 @@
 extends Block
 
+export var hit = false
+
 func _ready():
 	externalData = {
 		"receiverColor": "#ff0000"
 	}
 
 func _process(_delta):
-	$indicator.color = externalData.receiverColor
+	$Indicator.color = externalData.receiverColor

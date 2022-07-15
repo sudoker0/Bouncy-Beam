@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/glass_plane_block.png-9b239567672153ad1c13a1725dfd981f.stex"
+path="res://.import/gates_block_pipe_1.png-52b620cc4bf897c2d13074aa41a36776.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Blocks/glass_plane_block.png"
-dest_files=[ "res://.import/glass_plane_block.png-9b239567672153ad1c13a1725dfd981f.stex" ]
+source_file="res://Images/Blocks/gates_block_pipe_1.png"
+dest_files=[ "res://.import/gates_block_pipe_1.png-52b620cc4bf897c2d13074aa41a36776.stex" ]
 
 [params]
 

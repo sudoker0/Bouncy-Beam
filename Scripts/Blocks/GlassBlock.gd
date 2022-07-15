@@ -7,3 +7,4 @@ func _ready():
 
 func _process(_delta):
 	$GlassPane.rotation_degrees = externalData.rotation
+	$DeadGlassPane.rotation_degrees = externalData.rotation

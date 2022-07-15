@@ -156,17 +156,23 @@ bbcode_text = "[img]res://Images/Blocks/dead_zone_block.png[/img]
 [img]res://Images/Blocks/empty_block.png[/img]
  - Empty Block: Where you can place block on top of
 
+[img]res://Images/Blocks/gates_block.png[/img]
+ - Gate Block: Block any laser beam from passing through. This block is intended to use with the [color=#ff8300][u]Wall Block[/u][/color]. Refer to the [color=#ff8300][u]Gate Switch Block[/u][/color] for how to open the gate. The color of the gate will tell you the gate color.
+
+[img]res://Images/Blocks/gates_switch_block.png[/img]
+ - Gate Switch Block (1): When a laser beam with the same color as the block (1) hit the block (1), all of the gates with the same color as the block (1) will open, allow laser beam to pass through. The color in the middle point will tell you the gate switch color.
+
 [img]res://Images/Blocks/glass_block.png[/img]
- - Glass block: Reflect laser beam with a defined rotation.
+ - Glass Block: Reflect laser beam with a defined rotation.
 
 [img]res://Images/Blocks/laser_block.png[/img]
- - Laser block: Shoot a beam of laser at a defined rotation with a defined color.
+ - Laser Block: Shoot a beam of laser at a defined rotation with a defined color.
 
 [img]res://Images/Blocks/block_block.png[/img]
  - Light Block Block: Block light, like a brick.
 
 [img]res://Images/Blocks/receiver_block.png[/img]
- - Receiver block: Absorb the laser beam with a defined color. If all receiver get hit with a laser beam that has the same color as the defined color then you'll win. The color in the middle cell will tell you the color that the receiver need (Ex: blue in the picture above)
+ - Receiver Block (1): Absorb the laser beam with the same color as the block (1). If all the block (1) get hit by a laser beam that has the same color as the block (1) then you'll win. The color in the middle cell will tell you the color that the receiver need (Ex: blue in the picture above)
 
 [img]res://Images/Blocks/wall_block.png[/img]
  - Wall Block: It's a barrier.
@@ -178,16 +184,22 @@ text = "
  - Empty Block: Where you can place block on top of
 
 
- - Glass block: Reflect laser beam with a defined rotation.
+ - Gate Block: Block any laser beam from passing through. This block is intended to use with the Wall Block. Refer to the Gate Switch Block for how to open the gate. The color of the gate will tell you the gate color.
 
 
- - Laser block: Shoot a beam of laser at a defined rotation with a defined color.
+ - Gate Switch Block (1): When a laser beam with the same color as the block (1) hit the block (1), all of the gates with the same color as the block (1) will open, allow laser beam to pass through. The color in the middle point will tell you the gate switch color.
+
+
+ - Glass Block: Reflect laser beam with a defined rotation.
+
+
+ - Laser Block: Shoot a beam of laser at a defined rotation with a defined color.
 
 
  - Light Block Block: Block light, like a brick.
 
 
- - Receiver block: Absorb the laser beam with a defined color. If all receiver get hit with a laser beam that has the same color as the defined color then you'll win. The color in the middle cell will tell you the color that the receiver need (Ex: blue in the picture above)
+ - Receiver Block (1): Absorb the laser beam with the same color as the block (1). If all the block (1) get hit by a laser beam that has the same color as the block (1) then you'll win. The color in the middle cell will tell you the color that the receiver need (Ex: blue in the picture above)
 
 
  - Wall Block: It's a barrier.

@@ -1,6 +1,6 @@
 extends Control
 export (PackedScene) var button
-signal loadLevel
+
 func _ready():
 	Global.customMap = false
 	var file = File.new()

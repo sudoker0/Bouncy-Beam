@@ -20,6 +20,8 @@ func _process(_delta):
 
 var mousePrePos = Vector2(0, 0)
 func _unhandled_input(event):
+	print("-------------------")
+	print(event)
 	#print("fdsafdasfdsafsda")
 	# Camera movement
 	if event is InputEventMouseMotion and Global.cameraIsMoving:
@@ -49,6 +51,8 @@ func _unhandled_input(event):
 	if Input.is_action_just_released("start_camera_movement"):
 		print("End movement")
 		Global.enabledCameraMovement = false
+		Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+		Global.cameraIsMoving = false
 
 	# Handle camera moving
 	if Global.enabledCameraMovement and Input.is_action_pressed("left_button"):

@@ -12,6 +12,7 @@ func CanDrag(x, y):
 	return false
 
 func DragStart():
+	print("Start drag")
 	if Global.enabledCameraMovement or Global.blockIsMoving or Global.beginSimulation or Global.isEditingProperty:
 		return
 	var currentBlockCoords = (get_node("../GridManager").get_global_mouse_position() / Global.blockSize[0]).round()
