@@ -1,6 +1,6 @@
 # Bouncy Beam
 
-> Checkout the game on itch.io: [https://sudoku0.itch.io/bouncy-beam](https://sudoku0.itch.io/bouncy-beam)
+> Checkout the game on itch.io: [https://sudoker0.itch.io/bouncy-beam](https://sudoker0.itch.io/bouncy-beam)
 
 ## Description
 Do you like laser? Do you like mirror? Do you like winning?
