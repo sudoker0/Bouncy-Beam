@@ -497,8 +497,6 @@ dialog_hide_on_ok = true
 access = 2
 filters = PoolStringArray( "*.json" )
 show_hidden_files = true
-current_dir = "/home/anhquan/GitHub/Bouncy Beam"
-current_path = "/home/anhquan/GitHub/Bouncy Beam/"
 
 [node name="OpenFile" type="FileDialog" parent="UI/CanvasLayer"]
 margin_right = 489.0
@@ -510,8 +508,6 @@ dialog_hide_on_ok = true
 mode = 0
 access = 2
 filters = PoolStringArray( "*.json" )
-current_dir = "/home/anhquan/GitHub/Bouncy Beam"
-current_path = "/home/anhquan/GitHub/Bouncy Beam/"
 
 [node name="BackButton" type="Button" parent="UI/CanvasLayer"]
 margin_left = 23.0
